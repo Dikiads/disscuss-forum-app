@@ -3,7 +3,6 @@ import api from '../../utils/api';
 import {
   asyncToggleNeutralVoteThread,
   toggleNeutralVoteThread,
-  asyncReceiveThreads,
 } from './slice';
 
 describe('asyncToggleNeutralVoteThread thunk', () => {
