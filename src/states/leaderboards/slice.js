@@ -19,8 +19,11 @@ const leaderboardsSlice = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(asyncReceiveLeaderboards.fulfilled, (state, action) => action.payload);
-  }
+    builder.addCase(
+      asyncReceiveLeaderboards.fulfilled,
+      (state, action) => action.payload
+    );
+  },
 });
 
 export default leaderboardsSlice.reducer;

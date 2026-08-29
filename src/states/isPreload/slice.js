@@ -5,11 +5,11 @@ const isPreloadSlice = createSlice({
   name: 'isPreload',
   initialState: true,
   reducers: {
-    setIsPreload: (state, action) => action.payload
+    setIsPreload: (state, action) => action.payload,
   },
   extraReducers: (builder) => {
     builder.addCase(asyncPreloadProcess.fulfilled, () => false);
-  }
+  },
 });
 
 export const { setIsPreload } = isPreloadSlice.actions;

@@ -14,7 +14,8 @@ function LeaderboardsPage() {
   return (
     <div className="leaderboards-page max-w-3xl mx-auto py-8 px-4">
       <h2 className="text-2xl font-extrabold text-gray-800 mb-6 flex items-center gap-3">
-        <i className="fa-solid fa-trophy text-yellow-500"></i> Klasemen Pengguna Aktif
+        <i className="fa-solid fa-trophy text-yellow-500"></i> Klasemen Pengguna
+        Aktif
       </h2>
       <LeaderboardList leaderboards={leaderboards} />
     </div>

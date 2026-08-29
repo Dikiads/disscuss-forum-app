@@ -35,24 +35,34 @@ function App() {
 
       <div className="md:ml-64 pb-20 md:pb-0 min-h-screen bg-gray-50 border-l border-gray-200">
         <main className="max-w-4xl mx-auto px-4 sm:px-8 py-8">
-          <Suspense fallback={
-            <div className="flex flex-col items-center justify-center mt-32">
-              <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500 mb-3"></div>
-              <p className="text-gray-500 text-sm font-medium">Memuat...</p>
-            </div>
-          }>
+          <Suspense
+            fallback={
+              <div className="flex flex-col items-center justify-center mt-32">
+                <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500 mb-3"></div>
+                <p className="text-gray-500 text-sm font-medium">Memuat...</p>
+              </div>
+            }
+          >
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/threads/:id" element={<DetailPage />} />
               <Route path="/leaderboards" element={<LeaderboardsPage />} />
 
               {authUser && <Route path="/new" element={<AddThreadPage />} />}
-              {authUser && <Route path="/login" element={<Navigate to="/" />} />}
-              {authUser && <Route path="/register" element={<Navigate to="/" />} />}
+              {authUser && (
+                <Route path="/login" element={<Navigate to="/" />} />
+              )}
+              {authUser && (
+                <Route path="/register" element={<Navigate to="/" />} />
+              )}
 
               {!authUser && <Route path="/login" element={<LoginPage />} />}
-              {!authUser && <Route path="/register" element={<RegisterPage />} />}
-              {!authUser && <Route path="/new" element={<Navigate to="/login" />} />}
+              {!authUser && (
+                <Route path="/register" element={<RegisterPage />} />
+              )}
+              {!authUser && (
+                <Route path="/new" element={<Navigate to="/login" />} />
+              )}
             </Routes>
           </Suspense>
         </main>

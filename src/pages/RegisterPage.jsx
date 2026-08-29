@@ -13,9 +13,19 @@ function RegisterPage() {
   const handleRegister = ({ name, email, password }) => {
     dispatch(asyncRegisterUser({ name, email, password })).then((result) => {
       if (result.error) {
-        Swal.fire('Registrasi Gagal', result.error.message || 'Harap periksa kembali isian form Anda.', 'error');
+        Swal.fire(
+          'Registrasi Gagal',
+          result.error.message || 'Harap periksa kembali isian form Anda.',
+          'error'
+        );
       } else {
-        Swal.fire({ title: 'Berhasil', text: 'Akun terdaftar! Silakan login.', icon: 'success', timer: 2000, showConfirmButton: false });
+        Swal.fire({
+          title: 'Berhasil',
+          text: 'Akun terdaftar! Silakan login.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
         navigate('/login');
       }
     });
@@ -29,8 +39,12 @@ function RegisterPage() {
       className="max-w-md mx-auto mt-8 bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
     >
       <div className="bg-gradient-to-br from-blue-800 to-blue-500 px-8 py-8 text-center relative">
-        <h2 className="text-3xl font-extrabold text-white mb-2 relative z-10 tracking-tight">Buat Akun Baru</h2>
-        <p className="text-blue-100 text-sm font-medium relative z-10">Bergabunglah dengan ribuan developer kreatif lainnya.</p>
+        <h2 className="text-3xl font-extrabold text-white mb-2 relative z-10 tracking-tight">
+          Buat Akun Baru
+        </h2>
+        <p className="text-blue-100 text-sm font-medium relative z-10">
+          Bergabunglah dengan ribuan developer kreatif lainnya.
+        </p>
       </div>
 
       <div className="p-8">
@@ -38,13 +52,18 @@ function RegisterPage() {
 
         <div className="mt-8 pt-6 border-t border-gray-100 text-center">
           <p className="text-sm text-gray-600 font-medium">
-            Sudah pernah mendaftar? <Link to="/login" className="font-bold text-blue-600 hover:text-blue-700 hover:underline transition-colors">Masuk di sini</Link>
+            Sudah pernah mendaftar?{' '}
+            <Link
+              to="/login"
+              className="font-bold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+            >
+              Masuk di sini
+            </Link>
           </p>
         </div>
       </div>
     </motion.div>
   );
 }
-
 
 export default RegisterPage;

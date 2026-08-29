@@ -19,8 +19,11 @@ const usersSlice = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(asyncReceiveUsers.fulfilled, (state, action) => action.payload);
-  }
+    builder.addCase(
+      asyncReceiveUsers.fulfilled,
+      (state, action) => action.payload
+    );
+  },
 });
 
 export default usersSlice.reducer;

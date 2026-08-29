@@ -13,9 +13,18 @@ function AddThreadPage() {
   const handleAddThread = ({ title, body, category }) => {
     dispatch(asyncAddThread({ title, body, category })).then((result) => {
       if (result.error) {
-        Swal.fire('Gagal Membuat Diskusi', result.error.message || 'Mohon lengkapi isian Anda.', 'error');
+        Swal.fire(
+          'Gagal Membuat Diskusi',
+          result.error.message || 'Mohon lengkapi isian Anda.',
+          'error'
+        );
       } else {
-        Swal.fire({ title: 'Diskusi Mengudara!', icon: 'success', timer: 1500, showConfirmButton: false });
+        Swal.fire({
+          title: 'Diskusi Mengudara!',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+        });
         navigate('/');
       }
     });
@@ -33,8 +42,13 @@ function AddThreadPage() {
           <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-4 shadow-inner">
             <i className="fa-solid fa-pen-nib"></i>
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Mulai Diskusi Baru</h2>
-          <p className="text-sm font-medium text-gray-500 mt-2 line-clamp-2">Sampaikan ide yang mengilhami, keluh kesah kode, atau solusi brilian Anda ke publik secara elegan.</p>
+          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+            Mulai Diskusi Baru
+          </h2>
+          <p className="text-sm font-medium text-gray-500 mt-2 line-clamp-2">
+            Sampaikan ide yang mengilhami, keluh kesah kode, atau solusi brilian
+            Anda ke publik secara elegan.
+          </p>
         </div>
 
         <ThreadInput

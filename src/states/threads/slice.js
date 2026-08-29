@@ -65,60 +65,70 @@ const threadsSlice = createSlice({
         thread.upVotesBy = thread.upVotesBy.filter((id) => id !== userId);
         thread.downVotesBy = thread.downVotesBy.filter((id) => id !== userId);
       }
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(asyncReceiveThreads.fulfilled, (state, action) => action.payload)
-      .addCase(asyncAddThread.fulfilled, (state, action) => [action.payload, ...state]);
-  }
+      .addCase(asyncAddThread.fulfilled, (state, action) => [
+        action.payload,
+        ...state,
+      ]);
+  },
 });
 
-export const { toggleUpVoteThread, toggleDownVoteThread, toggleNeutralVoteThread } = threadsSlice.actions;
+export const {
+  toggleUpVoteThread,
+  toggleDownVoteThread,
+  toggleNeutralVoteThread,
+} = threadsSlice.actions;
 
-export const asyncToggleUpVoteThread = (threadId) => async (dispatch, getState) => {
-  const { authUser } = getState();
-  if (!authUser) {
-    alert('Harap login terlebih dahulu');
-    return;
-  }
-  dispatch(toggleUpVoteThread({ threadId, userId: authUser.id }));
-  try {
-    await api.upVoteThread(threadId);
-  } catch (error) {
-    alert(error.message);
+export const asyncToggleUpVoteThread =
+  (threadId) => async (dispatch, getState) => {
+    const { authUser } = getState();
+    if (!authUser) {
+      alert('Harap login terlebih dahulu');
+      return;
+    }
     dispatch(toggleUpVoteThread({ threadId, userId: authUser.id }));
-  }
-};
+    try {
+      await api.upVoteThread(threadId);
+    } catch (error) {
+      alert(error.message);
+      dispatch(toggleUpVoteThread({ threadId, userId: authUser.id }));
+    }
+  };
 
-export const asyncToggleDownVoteThread = (threadId) => async (dispatch, getState) => {
-  const { authUser } = getState();
-  if (!authUser) {
-    alert('Harap login terlebih dahulu');
-    return;
-  }
-  dispatch(toggleDownVoteThread({ threadId, userId: authUser.id }));
-  try {
-    await api.downVoteThread(threadId);
-  } catch (error) {
-    alert(error.message);
+export const asyncToggleDownVoteThread =
+  (threadId) => async (dispatch, getState) => {
+    const { authUser } = getState();
+    if (!authUser) {
+      alert('Harap login terlebih dahulu');
+      return;
+    }
     dispatch(toggleDownVoteThread({ threadId, userId: authUser.id }));
-  }
-};
+    try {
+      await api.downVoteThread(threadId);
+    } catch (error) {
+      alert(error.message);
+      dispatch(toggleDownVoteThread({ threadId, userId: authUser.id }));
+    }
+  };
 
-export const asyncToggleNeutralVoteThread = (threadId) => async (dispatch, getState) => {
-  const { authUser } = getState();
-  if (!authUser) {
-    alert('Harap login terlebih dahulu');
-    return;
-  }
-  dispatch(toggleNeutralVoteThread({ threadId, userId: authUser.id }));
-  try {
-    await api.neutralVoteThread(threadId);
-  } catch (error) {
-    alert(error.message);
-    dispatch(asyncReceiveThreads());
-  }
-};
+export const asyncToggleNeutralVoteThread =
+  (threadId) => async (dispatch, getState) => {
+    const { authUser } = getState();
+    if (!authUser) {
+      alert('Harap login terlebih dahulu');
+      return;
+    }
+    dispatch(toggleNeutralVoteThread({ threadId, userId: authUser.id }));
+    try {
+      await api.neutralVoteThread(threadId);
+    } catch (error) {
+      alert(error.message);
+      dispatch(asyncReceiveThreads());
+    }
+  };
 
 export default threadsSlice.reducer;

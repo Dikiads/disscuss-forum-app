@@ -14,7 +14,9 @@ function RegisterInput({ register }) {
   return (
     <form onSubmit={handleRegister} className="space-y-5">
       <div>
-        <label className="block text-sm font-bold text-gray-700 mb-2">Nama Lengkap</label>
+        <label className="block text-sm font-bold text-gray-700 mb-2">
+          Nama Lengkap
+        </label>
         <input
           type="text"
           value={name}
@@ -25,7 +27,9 @@ function RegisterInput({ register }) {
         />
       </div>
       <div>
-        <label className="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+        <label className="block text-sm font-bold text-gray-700 mb-2">
+          Email Address
+        </label>
         <input
           type="email"
           value={email}
@@ -36,7 +40,9 @@ function RegisterInput({ register }) {
         />
       </div>
       <div>
-        <label className="block text-sm font-bold text-gray-700 mb-2">Buat Password</label>
+        <label className="block text-sm font-bold text-gray-700 mb-2">
+          Buat Password
+        </label>
         <input
           type="password"
           value={password}
@@ -45,13 +51,16 @@ function RegisterInput({ register }) {
           placeholder="Minimal 6 karakter"
           required
         />
-        <p className="text-xs text-gray-400 mt-2 font-medium ml-1"><i className="fa-solid fa-shield-halved mr-1"></i> Data Anda dienkripsi dan aman</p>
+        <p className="text-xs text-gray-400 mt-2 font-medium ml-1">
+          <i className="fa-solid fa-shield-halved mr-1"></i> Data Anda
+          dienkripsi dan aman
+        </p>
       </div>
       <button
         type="submit"
         className="w-full mt-4 bg-gray-900 hover:bg-black text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] focus:ring-4 focus:ring-gray-300"
       >
-                Daftarkan Akun
+        Daftarkan Akun
       </button>
     </form>
   );

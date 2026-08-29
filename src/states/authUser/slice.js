@@ -55,14 +55,14 @@ const authUserSlice = createSlice({
   initialState: null,
   reducers: {
     setAuthUser: (state, action) => action.payload,
-    unsetAuthUser: () => null
+    unsetAuthUser: () => null,
   },
   extraReducers: (builder) => {
     builder
       .addCase(asyncSetAuthUser.fulfilled, (state, action) => action.payload)
       .addCase(asyncPreloadProcess.fulfilled, (state, action) => action.payload)
       .addCase(asyncUnsetAuthUser.fulfilled, () => null);
-  }
+  },
 });
 
 export const { setAuthUser, unsetAuthUser } = authUserSlice.actions;

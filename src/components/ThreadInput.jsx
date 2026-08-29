@@ -14,7 +14,9 @@ function ThreadInput({ addThread, cancelAdd }) {
   return (
     <form onSubmit={handleAddThread} className="p-8 space-y-7">
       <div>
-        <label className="block text-sm font-extrabold text-gray-800 mb-2">Judul Diskusi <span className="text-red-500">*</span></label>
+        <label className="block text-sm font-extrabold text-gray-800 mb-2">
+          Judul Diskusi <span className="text-red-500">*</span>
+        </label>
         <input
           type="text"
           value={title}
@@ -26,7 +28,12 @@ function ThreadInput({ addThread, cancelAdd }) {
       </div>
 
       <div>
-        <label className="block text-sm font-extrabold text-gray-800 mb-2">Hashtag Kategori <span className="text-gray-400 font-medium text-xs ml-1">(Opsional)</span></label>
+        <label className="block text-sm font-extrabold text-gray-800 mb-2">
+          Hashtag Kategori{' '}
+          <span className="text-gray-400 font-medium text-xs ml-1">
+            (Opsional)
+          </span>
+        </label>
         <input
           type="text"
           value={category}
@@ -37,7 +44,9 @@ function ThreadInput({ addThread, cancelAdd }) {
       </div>
 
       <div>
-        <label className="block text-sm font-extrabold text-gray-800 mb-2">Isi Pesan/Utama <span className="text-red-500">*</span></label>
+        <label className="block text-sm font-extrabold text-gray-800 mb-2">
+          Isi Pesan/Utama <span className="text-red-500">*</span>
+        </label>
         <textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
@@ -53,7 +62,7 @@ function ThreadInput({ addThread, cancelAdd }) {
           onClick={cancelAdd}
           className="px-6 py-3.5 text-sm font-bold text-gray-500 hover:text-gray-700 hover:bg-gray-50 rounded-xl transition-all"
         >
-                    Batalkan
+          Batalkan
         </button>
         <button
           type="submit"

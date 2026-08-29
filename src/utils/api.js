@@ -14,8 +14,8 @@ const api = {
       ...options,
       headers: {
         ...options.headers,
-        Authorization: `Bearer ${getAccessToken()}`
-      }
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
     });
   },
 
@@ -23,9 +23,9 @@ const api = {
     const response = await fetch(`${API_BASE_URL}/register`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, email, password })
+      body: JSON.stringify({ name, email, password }),
     });
 
     const responseJson = await response.json();
@@ -35,7 +35,9 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { user } } = responseJson;
+    const {
+      data: { user },
+    } = responseJson;
     return user;
   },
 
@@ -43,9 +45,9 @@ const api = {
     const response = await fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email, password }),
     });
 
     const responseJson = await response.json();
@@ -55,7 +57,9 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { token } } = responseJson;
+    const {
+      data: { token },
+    } = responseJson;
     return token;
   },
 
@@ -68,7 +72,9 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { user } } = responseJson;
+    const {
+      data: { user },
+    } = responseJson;
     return user;
   },
 
@@ -81,7 +87,9 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { users } } = responseJson;
+    const {
+      data: { users },
+    } = responseJson;
     return users;
   },
 
@@ -89,9 +97,9 @@ const api = {
     const response = await this.fetchWithToken(`${API_BASE_URL}/threads`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title, body, category })
+      body: JSON.stringify({ title, body, category }),
     });
 
     const responseJson = await response.json();
@@ -101,7 +109,9 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { thread } } = responseJson;
+    const {
+      data: { thread },
+    } = responseJson;
     return thread;
   },
 
@@ -114,7 +124,9 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { threads } } = responseJson;
+    const {
+      data: { threads },
+    } = responseJson;
     return threads;
   },
 
@@ -127,18 +139,23 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { detailThread } } = responseJson;
+    const {
+      data: { detailThread },
+    } = responseJson;
     return detailThread;
   },
 
   async createComment({ threadId, content }) {
-    const response = await this.fetchWithToken(`${API_BASE_URL}/threads/${threadId}/comments`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ content })
-    });
+    const response = await this.fetchWithToken(
+      `${API_BASE_URL}/threads/${threadId}/comments`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content }),
+      }
+    );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
@@ -147,73 +164,105 @@ const api = {
       throw new Error(message);
     }
 
-    const { data: { comment } } = responseJson;
+    const {
+      data: { comment },
+    } = responseJson;
     return comment;
   },
 
   async upVoteThread(threadId) {
-    const response = await this.fetchWithToken(`${API_BASE_URL}/threads/${threadId}/up-vote`, {
-      method: 'POST'
-    });
+    const response = await this.fetchWithToken(
+      `${API_BASE_URL}/threads/${threadId}/up-vote`,
+      {
+        method: 'POST',
+      }
+    );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'success') { throw new Error(message); }
+    if (status !== 'success') {
+      throw new Error(message);
+    }
     return responseJson.data.vote;
   },
 
   async downVoteThread(threadId) {
-    const response = await this.fetchWithToken(`${API_BASE_URL}/threads/${threadId}/down-vote`, {
-      method: 'POST'
-    });
+    const response = await this.fetchWithToken(
+      `${API_BASE_URL}/threads/${threadId}/down-vote`,
+      {
+        method: 'POST',
+      }
+    );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'success') { throw new Error(message); }
+    if (status !== 'success') {
+      throw new Error(message);
+    }
     return responseJson.data.vote;
   },
 
   async neutralVoteThread(threadId) {
-    const response = await this.fetchWithToken(`${API_BASE_URL}/threads/${threadId}/neutral-vote`, {
-      method: 'POST'
-    });
+    const response = await this.fetchWithToken(
+      `${API_BASE_URL}/threads/${threadId}/neutral-vote`,
+      {
+        method: 'POST',
+      }
+    );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'success') { throw new Error(message); }
+    if (status !== 'success') {
+      throw new Error(message);
+    }
     return responseJson.data.vote;
   },
 
   async upVoteComment(threadId, commentId) {
-    const response = await this.fetchWithToken(`${API_BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`, {
-      method: 'POST'
-    });
+    const response = await this.fetchWithToken(
+      `${API_BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
+      {
+        method: 'POST',
+      }
+    );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'success') { throw new Error(message); }
+    if (status !== 'success') {
+      throw new Error(message);
+    }
     return responseJson.data.vote;
   },
 
   async downVoteComment(threadId, commentId) {
-    const response = await this.fetchWithToken(`${API_BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`, {
-      method: 'POST'
-    });
+    const response = await this.fetchWithToken(
+      `${API_BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
+      {
+        method: 'POST',
+      }
+    );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'success') { throw new Error(message); }
+    if (status !== 'success') {
+      throw new Error(message);
+    }
     return responseJson.data.vote;
   },
 
   async neutralVoteComment(threadId, commentId) {
-    const response = await this.fetchWithToken(`${API_BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`, {
-      method: 'POST'
-    });
+    const response = await this.fetchWithToken(
+      `${API_BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
+      {
+        method: 'POST',
+      }
+    );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'success') { throw new Error(message); }
+    if (status !== 'success') {
+      throw new Error(message);
+    }
     return responseJson.data.vote;
   },
 
@@ -227,7 +276,7 @@ const api = {
     }
 
     return responseJson.data.leaderboards;
-  }
+  },
 };
 
 export { getAccessToken, putAccessToken };
