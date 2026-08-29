@@ -1,9 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import api from '../../utils/api';
-import {
-  asyncToggleNeutralVoteThread,
-  toggleNeutralVoteThread,
-} from './slice';
+import { asyncToggleNeutralVoteThread, toggleNeutralVoteThread } from './slice';
 
 describe('asyncToggleNeutralVoteThread thunk', () => {
   beforeEach(() => {
