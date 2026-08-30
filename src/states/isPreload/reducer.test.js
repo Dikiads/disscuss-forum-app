@@ -6,7 +6,8 @@ describe('isPreloadReducers function', () => {
     const initialState = true;
     const action = { type: 'UNKNOWN' };
     const nextState = isPreloadReducer(initialState, action);
-    expect(nextState).toEqual(initialState);
+    // TEST SENGAJA DISALAHKAN UNTUK SCREENSHOT CI ERROR (VERSI 2)
+    expect(nextState).toEqual(false);
   });
 
   it('should return the correct state when given setIsPreload action', () => {
